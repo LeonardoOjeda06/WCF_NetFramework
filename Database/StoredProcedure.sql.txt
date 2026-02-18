@@ -1,0 +1,49 @@
+USE [WCFDemo]
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE SP_User_CRUD
+    @Action VARCHAR(10),
+    @Id INT = NULL,
+    @Name VARCHAR(50) = NULL,
+    @Gender CHAR(1) = NULL,
+    @Birthdate DATE = NULL
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    IF @Action = 'INSERT'
+    BEGIN
+        INSERT INTO [dbo].[User] (Name, Gender, Birthdate)
+        VALUES (@Name, @Gender, @Birthdate)
+    END
+
+    IF @Action = 'UPDATE'
+    BEGIN
+        UPDATE [dbo].[User]
+        SET Name = @Name,
+            Gender = @Gender,
+            Birthdate = @Birthdate
+        WHERE Id = @Id
+    END
+
+    IF @Action = 'DELETE'
+    BEGIN
+        DELETE FROM [dbo].[User]
+        WHERE Id = @Id
+    END
+
+    IF @Action = 'SELECT'
+    BEGIN
+        SELECT * FROM [dbo].[User]
+    END
+
+    IF @Action = 'EXISTS'
+    BEGIN
+        SELECT COUNT(*) FROM [dbo].[User] WHERE Name = @Name
+    END
+END

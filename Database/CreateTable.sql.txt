@@ -1,0 +1,6 @@
+CREATE TABLE User (
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    Name VARCHAR(100) NOT NULL,
+    Birthdate DATE NOT NULL,
+    Gender CHAR(1) NOT NULL
+);
