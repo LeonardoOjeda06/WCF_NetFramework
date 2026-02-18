@@ -1,6 +1,6 @@
 # Sistema de Usuarios
-### Arquitectura por Capas
-### Implementacion de servicio WCF
+- Arquitectura por Capas
+- Implementacion de servicio WCF
 
 ## Requisitos
 
