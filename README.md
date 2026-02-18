@@ -10,9 +10,10 @@
 
 ## Configuración
 
-1. Crear base de datos DemoDB
-2. Ejecutar el script SQL ubicado en /Database/script.sql
-3. Verificar la cadena de conexión en Web.config
+1. Crear base de datos WCFDemo
+2. Ejecutar el script SQL ubicado en /Database/CreateTable.sql para crear la tabla de la entidad User
+3. Ejecutar el script SQL ubicado en /Database/StoredProcedure.sql para crear SP_User_CRUD
+4. Verificar la cadena de conexión en Web.config
 
 ## Arquitectura
 
