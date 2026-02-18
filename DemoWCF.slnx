@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="DemoWCF.Business/DemoWCF.Business.csproj" Id="983a84ac-863d-4a5a-bf90-112f06bfab1e" />
+  <Project Path="DemoWCF.Model/DemoWCF.Model.csproj" Id="012331fc-b2d1-444d-a4e1-fe029e3f3322" />
+  <Project Path="DemoWCF.Presentation/DemoWCF.Presentation.csproj" Id="3b7ecab0-6ab8-4718-a9fc-14cff41e1fd1" />
+</Solution>
