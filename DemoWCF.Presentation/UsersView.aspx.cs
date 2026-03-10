@@ -16,6 +16,8 @@ namespace DemoWCF.Presentation
                 CargarGrid();
         }
 
+        // Si la fila está en modo edición, busca el DropDownList de
+        // género (ddlGender) y preselecciona el valor
         protected void gvUsers_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow &&
@@ -24,10 +26,23 @@ namespace DemoWCF.Presentation
                 DropDownList ddl =
                     (DropDownList)e.Row.FindControl("ddlGender");
 
+                //Lee dinamicamente la propiedad de un objeto
+                //DataBinder.Eval(objeto, "NombrePropiedad")
                 string gender = DataBinder.Eval(e.Row.DataItem, "Gender")?.ToString();
 
                 if (!string.IsNullOrEmpty(gender))
                 {
+
+                    //if (gender == "Masculino")
+                    //{
+                    //    gender = "M";
+                    //}
+                    //else if (gender == "Femenino")
+                    //{
+                    //    gender = "F";
+                    //}
+
+                    // permite que pueda mostrar en el ddl la opcion 0 --- Seleccionar ---
                     ListItem item = ddl.Items.FindByValue(gender);
                     if (item != null)
                         ddl.SelectedValue = gender;
@@ -37,7 +52,10 @@ namespace DemoWCF.Presentation
 
         protected void gvUsers_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
+            // obtengo el id del usuario a actualizar
             int id = Convert.ToInt32(gvUsers.DataKeys[e.RowIndex].Value);
+
+            // obtengo la fila que se está editando
             GridViewRow row = gvUsers.Rows[e.RowIndex];
 
             TextBox txtNombre = (TextBox)row.FindControl("txtNombre");
@@ -55,12 +73,14 @@ namespace DemoWCF.Presentation
             UserServiceClient client = new UserServiceClient();
             client.Update(dto);
 
+            // le digo al form ninguna fila está en modo edición
             gvUsers.EditIndex = -1;
             CargarGrid();
         }
 
         protected void gvUsers_RowEditing(object sender, GridViewEditEventArgs e)
         {
+            // Obtengo el número de la fila a editar
             gvUsers.EditIndex = e.NewEditIndex;
             CargarGrid();
         }
@@ -77,6 +97,7 @@ namespace DemoWCF.Presentation
 
         protected void gvUsers_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
+            //le digo al form ninguna fila está en modo edición
             gvUsers.EditIndex = -1;
             CargarGrid();
         }
